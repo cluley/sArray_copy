@@ -4,6 +4,15 @@ smart_array::smart_array(const int& length) : _length(length) {
 	array = new int[length]();
 }
 
+smart_array::smart_array(const smart_array& other) {
+	_length = other._length;
+	i = other.i;
+
+	for (int j = 0; j < _length; ++j) {
+		array[j] = other.array[j];
+	}
+}
+
 smart_array::~smart_array() {
 	delete[] array;
 }
@@ -19,11 +28,15 @@ int smart_array::get_element(const int& idx) {
 	return array[idx - 1];
 }
 
-void smart_array::operator=(const smart_array& other) {
+smart_array& smart_array::operator=(const smart_array& other) {
+	if (this == &other) return *this;
+	
 	_length = other._length;
 	i = other.i;
 
-	for (int j = 0; j < _length; j++) {
+	for (int j = 0; j < _length; ++j) {
 		array[j] = other.array[j];
 	}
+
+	return *this;
 }
