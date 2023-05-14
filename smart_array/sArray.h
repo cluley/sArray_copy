@@ -17,6 +17,6 @@ public:
 	smart_array& operator=(const smart_array& other);
 private:
 	int* array = nullptr;
-	int _length = 0;
+	int length_ = 0;
 	int i = 0;
 };
